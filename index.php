@@ -1,23 +1,39 @@
 <?php
+require_once '/config/config.php';
+require_once 'config/functions.php';
 
-require_once'config/config.php';
-require_once'includes/activity-logger.php';
-
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $action = trim($_POST['action'] ?? '');
-
-    $user_id = $_SESSION['user_id'] ?? null;
-    $user_email = $_SESSION['user_email'] ?? null;
+if(isset($_SESSION['user_id'])){
+    header('Location' . BASE_URL . '/app/' . $_SESSION['user_role'] . '/index.php');
 }
 
+$error='';
+
+if($_SERVER['REQUEST_METHOD'] === ''){
+    $login =trim($_POST['login'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if(loginUser($pdo,$login,$password)){
+        header('location:' . BASE_URL . '/app' . $_SESSION['user_role'] . '/index.php');
+    }
+}
+
+?>
 
 <!DOCTYPE html>
-< lang="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF=8">
+    <meta name="veiwport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
 </head>
 <body>
-    <form method="POST">
-</body>
+
+<form method="POST">
+    <label>Username or Email</label>
+    <input type="text"
+                name="login"
+                required>
+        <br>
+        <br>
+        <label>Password</label>
+        <input type="password"
