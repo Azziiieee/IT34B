@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-define('BASE_URL','http://localhost/it34b');
+define('BASE_URL','http://localhost/IT34B-1');
 
 define('DB_HOST','localhost');
-define('DB_NAME', 'it34b_lab_db');
+define('DB_NAME', 'it34b_lab_db2');
 define('DB_USER','root');
 define('DB_PASS','');
 
