@@ -45,3 +45,35 @@ if($_SERVER['REQUEST_METHOD'] === ''){
   
     </body>
     </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <META name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Login</title>
+</head>
+<body>
+
+<form method="POST">
+    <label>Username or Email</label>
+    <input type="text"
+            name="login"
+            required>
+
+    <br>
+    <br>
+    <label>Password</label>
+    <input type="password"
+            name="password"
+            required>
+    <br>
+    <button type="submit">Sign In</button>
+</form>
+
+<?php if(isset($_GET['timeout'])): ?>
+    <p>Your session has expired due to inactivity. Please log in again</p>
+<?php endif; ?>
+
+</body>
+</html>
