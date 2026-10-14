@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome User</h1>
+    <H1>Welcome User</H1>
     <a href="../../auth/signout.php">Sign Out</a>
 </body>
 </html>
