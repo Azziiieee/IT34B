@@ -10,10 +10,11 @@ if(isset($_SESSION['user_id'])){
 $error='';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
     $login = trim($_POST['login'] ?? '' );
     $password = $_POST['password'] ?? '';
 
-    
+    requireCsrftoken();
 
     $error = 'Invalid Login Credentials';
 
@@ -66,6 +67,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
 <form method="POST">
     <label>Username or Email</label>
+
+    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(generateCsrfToken()); ?>">
     <input type="text"
             name="login"
             >
