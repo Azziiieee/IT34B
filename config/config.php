@@ -4,20 +4,24 @@ session_start();
 require_once(__DIR__ . '/../functions/activity.php');
 require_once(__DIR__ . '/../functions/auth.php');
 require_once(__DIR__ . '/../functions/redirect.php');
+require_once(__DIR__ . '/../functions/sessions.php');
 
-define('BASE_URL','http://localhost/it34b');
+
+
+define('BASE_URL', 'http://localhost/it34b');
 
 define('DB_HOST','localhost');
-define('DB_NAME', 'it34b_lab_db');
-define('DB_USER','root');
+define('DB_NAME', 'it34b_lab_db1');
+define('DB_USER', 'root'); 
 define('DB_PASS','');
 
 try{
-    $pdo =new PDO(
-        "mysql:host" . DB_HOST . ";dbname=" .DB_NAME, DB_USER, DB_PASS,
+    $pdo = new PDO(
+        "mysql:host=" . DB_HOST . ";dbname=" .DB_NAME, DB_USER, DB_PASS,
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
 }catch(PDOException $e){
-        die("Connection failed: " . $e->getMessage());
-} 
+    die("Connection Failed: " . $e->getMessage());
+}
+
 ?>
